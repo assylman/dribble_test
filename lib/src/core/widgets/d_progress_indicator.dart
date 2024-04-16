@@ -8,7 +8,7 @@ class DProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 4.w),
+      padding: EdgeInsets.symmetric(vertical: 8.w),
       child: Center(
         child: SizedBox(
           width: 22.w,

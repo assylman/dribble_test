@@ -56,7 +56,7 @@ class _ProductsViewState extends State<ProductsView> {
               physics: const BouncingScrollPhysics(),
               itemCount: products.length + 1,
               controller: _scrollController,
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 30),
               separatorBuilder: (context, index) => Divider(
                 indent: 12,
                 endIndent: 12,
