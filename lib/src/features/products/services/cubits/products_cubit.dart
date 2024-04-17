@@ -37,18 +37,21 @@ class ProductsCubitImpl extends ProductsCubit {
 
     /// Fetch next
     int page = products?.meta?.page ?? 0;
+    final total = products?.meta?.total ?? maxTotal;
     final perPage = products?.meta?.perPage ?? maxPerPage;
 
     page += 1;
 
-    final data = await _fetchData(page, perPage);
-    if (data != null) {
-      final newProducts = data.copyWith(products: [
-        ...products?.products ?? [],
-        ...data.products,
-      ]);
-      _current = _current.copyWith(newProducts);
-      return emit(_current);
+    if (page * perPage < total) {
+      final data = await _fetchData(page, perPage);
+      if (data != null) {
+        final newProducts = data.copyWith(products: [
+          ...products?.products ?? [],
+          ...data.products,
+        ]);
+        _current = _current.copyWith(newProducts);
+        return emit(_current);
+      }
     }
   }
 
